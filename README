@@ -1,0 +1,36 @@
+# README for Page Table Configuration
+
+This document provides an overview and guidance for configuring `config.h` for the multi-level page table system.
+
+## Configuring `config.h`
+
+The `config.h` file contains constants that define the behavior and structure of the multi-level page table used by the system. Here are the configurable parameters and how you can adjust them:
+
+### `LEVELS`
+
+- **Description**: This defines the number of levels in your multi-level page table. Each level corresponds to one part of the Virtual Page Number (VPN) used in address translation.
+- **How to Choose**:
+    - The number of levels typically depends on the address space size and the page size. For most systems, 2 to 4 levels are sufficient. Increasing levels can decrease memory usage but may increase translation time. Choose based on the expected range of virtual addresses and memory constraints.
+
+### `POBITS`
+
+- **Description**: This parameter specifies the number of bits used for the page offset. The page offset determines the size of the pages used by the system.
+- **How to Choose**:
+    - The page size is 2^POBITS.
+      - Select based on your system needs and architecture
+
+## Known Bugs or Limitations
+- Cannot think of any
+
+## Implement De-Allocate Interface 
+Implementing a straightforward deallocate interface without substantially reworking the existing page_allocate and translate functions proves impractical. 
+
+If I wanted to implement this interface hypothetically,the proposed interface would be page_deallocate(size_t va) and each page would store a reference count for every virtual address mapping.For deallocating, you would traverse the page tables just like in allocation but in reverse order, decrementing the reference count for each page that the VA traverses. If the reference count of a page hits zero, it means there are no child tables or remaining VAs relying on it, so that page can be safely freed.
+For each allocation, or everytime page_allocate(va) is called, we would increment that reference count for every page table that
+is traversed. This count just reflects the "children" or VAs tied to it. Regarding the translate implementation, it would not
+change significantly because we already check if page table entries are valid. 
+
+
+
+
+

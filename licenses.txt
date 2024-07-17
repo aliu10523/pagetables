@@ -1,0 +1,18 @@
+Considered Licenses:
+
+1. GPL (General Public License) Version 3:
+   Summary: A strong copyleft license that requires derived works to be distributed under the same license terms.
+   Reason for Consideration: Ensures that all modifications remain open source, promoting a shared improvement ethos.
+   Reason for Rejection: I prefer a license that allows for more freedom in how the software can be used, even in proprietary projects, without the obligation to disclose source code.
+
+2. MIT License:
+   Summary: A permissive license that is short and to the point. It allows almost unrestricted freedom to use, modify, and redistribute, provided that the license notice is included with any substantial portions of the software.
+   Reason for Consideration: Promotes widespread use and integration with minimal restrictions.
+
+3. Apache License 2.0:
+   Summary:  A permissive license that also provides an express grant of patent rights from contributors to users.
+   Reason for Consideration: It allows easy integration into proprietary applications.
+   Reason for Rejection: It's too complex and not as straightforward as the MIT license.
+
+Final Choice: MIT License
+Reason for Final Choice: It allows others to use and modify my work, but still give me credit.
